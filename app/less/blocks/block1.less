@@ -1,5 +1,32 @@
-.block1 {
+
+// FRANK WAS HERE
+// FRANK WAS HERE
+// FRANK WAS HERE
+.block1-less {
     width: 100px;
     height: 100px;
+    height: 100px;
+    height: 114px;
     background: blue;
+    background: #4D3838;
+    background: orange;
+    /* c-style comments (survive) */
+    // EOL comments (get killed)
+}
+ 
+.prefixTest-less {
+
+    border: solid 1px red;
+    border: #fff solid 1px;
+
+
+    border-radius: 10px / 20px;
+    box-shadow: 3px 3px 0 #000;
+    transition: width 1s linear .2s;
+    transition: width 1s linear .2s;
+    width: calc(2 * 100px);
+
+    background: hsl(134, 50%, 50%); // expect #40b5fe
+
+    background-repeat: no-repeat repeat; // expect   repeat-y
 }
