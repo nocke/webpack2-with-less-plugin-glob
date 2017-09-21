@@ -1,0 +1,10 @@
+
+/*
+ * The fancy red.css file.
+ */
+.red-css {
+	color: red;
+	background: red;
+	background: orange;
+    /* c-style comments (survive), EOL not permitted */
+}
