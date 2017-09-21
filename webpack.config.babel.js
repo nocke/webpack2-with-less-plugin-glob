@@ -4,26 +4,25 @@ import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 import autoprefixer from 'autoprefixer';
-import cssnano from 'cssnano';
 
-
-const entryPath = path.join(__dirname, 'app'); //path to input dir
-const assetsPath = path.join(__dirname, 'assets'); //path to output dir
+const entryPath = path.join(__dirname, 'app');        //path to input dir
+const assetsPath = path.join(__dirname, 'assets');    //path to output dir
 
 const config = {
     context: entryPath,
     entry: {
-        styles: './styles.js'
+      styles: './styles.js'
     },
     output: {
-        path: assetsPath,
-        filename: "[name].js",
-        sourceMapFilename: "[file].map",
-        chunkFilename: "[name].[id].js",
-        publicPath: './'
+      path: assetsPath,
+      filename: "[name].js",
+      sourceMapFilename: "[file].map",
+      chunkFilename: "[name].[id].js",
+      publicPath: './'
     },
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
@@ -35,31 +34,13 @@ const config = {
                 exclude: /node_modules/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: [{
-                            loader: 'css-loader',
-                            options: {
-                                importLoaders: 2,
-                                minimize: {
-                                    normalizeWhitespace: true,
-                                    discardComments: true,
-                                    orderedValues: false
-                                }
-                            },
-                        },
+                    use: [
+                        'css-loader',
                         {
                             loader: 'postcss-loader',
                             options: {
                                 plugins: function () {
-                                    return [
-                                        autoprefixer({
-                                            browsers: ['iOS >= 5', 'ie 7', 'safari 7', 'Firefox >= 46']
-                                        }),
-                                        cssnano({
-                                            discardComments: {
-                                                removeAll: true
-                                            }
-                                        })
-                                    ]
+                                    return [autoprefixer('last 5 version', 'ie >= 7')] //TEMPTEMP
                                 }
                             }
                         },
