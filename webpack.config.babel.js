@@ -1,16 +1,19 @@
-var webpack = require('webpack');
-var path = require('path');
 
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var autoprefixer = require('autoprefixer');
 
-var entryPath = path.join(__dirname, 'app');        //path to input dir
-var assetsPath = path.join(__dirname, 'assets');    //path to output dir
+import webpack from 'webpack';
+import path from 'path';
 
-var config = {
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+
+import autoprefixer from 'autoprefixer';
+
+const entryPath = path.join(__dirname, 'app');        //path to input dir
+const assetsPath = path.join(__dirname, 'assets');    //path to output dir
+
+const config = {
     context: entryPath,
     entry: {
-      styles: './styles.js' 
+      styles: './styles.js'
     },
     output: {
       path: assetsPath,
@@ -24,7 +27,7 @@ var config = {
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader', 
+                    fallback: 'style-loader',
                     use: 'css-loader'
                 })
             },
@@ -32,14 +35,14 @@ var config = {
                 test: /\.less$/,
                 exclude: /node_modules/,
                 use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader', 
+                    fallback: 'style-loader',
                     use: [
                         'css-loader',
                         {
                             loader: 'postcss-loader',
                             options: {
                                 plugins: function () {
-                                    return [autoprefixer('last 3 version', 'ie >= 10')]
+                                    return [autoprefixer('last 5 version', 'ie >= 7')] //TEMPTEMP
                                 }
                             }
                         },
